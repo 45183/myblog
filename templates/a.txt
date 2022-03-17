@@ -1,0 +1,46 @@
+웹 사이트 - myblog
+
+회원관리, 게시판, 파일 업로드, 카테고리 기능
+
+
+terminal
+python manage.py startapp blog
+
+settings.py
+installed_apps에 blog 추가
+
+templates에        
+'DIRS': [BASE_DIR / 'templates'],
+
+LANGUAGE_CODE = 'ko-kr'\
+TIME_ZONE = 'Asia/Seoul'
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+
+config - urls.py
+path 추가
+
+
+superuser
+python manage.py createsuperuser
+
+
+
+사진 추가할 때
+models.py
+    photo = models.ImageField(upload_to='blog/images/%Y/%m/%d/',
+                              null=True, blank=True)            # Y만 대문자
+
+pip install Pillow 이후
+makemigrations, migrate
+
+
+settings.py에서
+static 아래
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')               # 프로젝트에 media 폴더 자동 생성
+
+config/urls.py에서
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
