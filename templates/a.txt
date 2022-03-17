@@ -44,3 +44,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')               # 프로젝트에 med
 
 config/urls.py에서
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+

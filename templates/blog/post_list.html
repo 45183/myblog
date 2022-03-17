@@ -9,13 +9,13 @@
 <body>
     <div id="container">
         {% include 'navbar.html' %}
-        <section>
+        <section id="list">
             <h1>블로그 홈입니다.</h1>
             {% if post_list %}
             {% for post in post_list %}
             <hr>
             <h3><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h3>
-            <h5>{{ post.pub_date }}</h5>
+            <h5>작성자 : {{ post.author }} (작성일:{{ post.pub_date }})</h5>
             {% if post.photo %}
             <img src="{{ post.photo.url }}">
             {% endif %}
@@ -25,6 +25,18 @@
             <p>포스트가 없습니다.</p>
             {% endif %}
         </section>
+        <aside>
+            <h3>분류(Categories)</h3>
+            <div>
+                {% for category in categories %}
+                <ul>
+                    <li><a href="{{ category.get_absolute_url }}">
+                        {{ category }}({{ category.post_set.count }})</a>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+        </aside>
     </div>
 </body>
 </html>

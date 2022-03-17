@@ -1,3 +1,7 @@
 #container{width: 996px; margin: 20px auto;}
 nav ul{list-style: none;}
 nav ul li{display: inline-block; margin: 10px;}
+
+/* 카테고리 스타일 */
+#list, #detail{width: 700px; float: left;}
+aside{width: 200px; float: right; margin: 50px 20px 0 0;}
