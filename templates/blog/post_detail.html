@@ -8,15 +8,15 @@
 </head>
 <body>
     <div id="container">
-        <header>
-            <nav>
-                <a href="{% url 'blog:index' %}">Home</a>
-            </nav>
-        </header>
+        {% include 'navbar.html' %}
         <section>
             <h3>{{ post.title }}</h3>
             <h5>{{ post.pub_date }}</h5>
-            <p>{{ post.content }}</p></body>
+            {% if post.photo %}
+            <img src="{{ post.photo.url }}">
+            {% endif %}
+            <p>{{ post.content | linebreaks }}</p>
         </section>
     </div>
+</body>
 </html>
